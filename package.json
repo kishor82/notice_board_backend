@@ -1,0 +1,33 @@
+{
+  "name": "noticebee",
+  "version": "1.0.0",
+  "description": "Notice Bee",
+  "main": "server.js",
+  "scripts": {
+    "client-install": "npm install --prefix client",
+    "start": "node server.js",
+    "server": "nodemon server.js",
+    "client": "npm start --prefix client",
+    "dev": "concurrently \"npm run server\" \"npm run client\"",
+    "generate-vapid-keys": "./node_modules/.bin/web-push generate-vapid-keys",
+    "docker-mongo": "sudo docker run -p 27017:27017  mongo:4.0.26-xenial"
+  },
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "bcryptjs": "^2.4.3",
+    "body-parser": "^1.18.3",
+    "boom": "^7.3.0",
+    "cookie-parser": "^1.4.6",
+    "express": "^4.16.4",
+    "is-empty": "^1.2.0",
+    "jsonwebtoken": "^8.3.0",
+    "mongoose": "^5.3.11",
+    "validator": "^10.9.0",
+    "web-push": "^3.4.4"
+  },
+  "devDependencies": {
+    "concurrently": "^4.1.2",
+    "nodemon": "^2.0.2"
+  }
+}
