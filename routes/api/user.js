@@ -28,7 +28,7 @@ const hashPassword = async (password) => {
 // @route POST api/register
 // @desc Register new use.
 // @access Private
-router.post('/register', authorization, (req, res, next) => {
+router.post('/register', (req, res, next) => {
   const { errors, isValid } = validateRegisterInput(req.body);
   // Check validation
   if (!isValid) {
