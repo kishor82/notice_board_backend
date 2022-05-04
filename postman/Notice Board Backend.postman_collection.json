@@ -1,0 +1,113 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Notice Board Backend",
+		"_postman_id": "bc218000-a9c7-6d62-5997-66f5afbc7583",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "get department data",
+			"request": {
+				"url": "http://localhost:7781/api/department/data",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "get companies data",
+			"request": {
+				"url": "http://localhost:7781/api/company/data",
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User Registration ",
+			"request": {
+				"url": "http://localhost:7781/api/register",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n\t \"company\": \"abc\",\n        \"email\": \"test@email.com\",\n        \"department\": \"testing\",\n        \"password\": \"test@123\",\n        \"password2\": \"test@123\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User Login ",
+			"request": {
+				"url": "http://localhost:7781/api/login",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"email\": \"test@email.com\",\n        \"password\": \"test@123\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "User Logout",
+			"request": {
+				"url": "http://localhost:7781/api/logout",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"email\": \"test@email.com\",\n        \"password\": \"test@123\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "Get Authenticated User",
+			"request": {
+				"url": "http://localhost:7781/api/auth",
+				"method": "GET",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n        \"email\": \"test@email.com\",\n        \"password\": \"test@123\"\n}"
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
