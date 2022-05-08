@@ -22,7 +22,7 @@ router.post('/add-company', async (req, res, next) => {
 });
 
 //Return all companies
-router.get('/company/data', authorization, async (req, res, next) => {
+router.get('/company/data', async (req, res, next) => {
   try {
     const data = await Company.find({}).select('-__v').sort('-date').limit().exec();
     res.json({ data });

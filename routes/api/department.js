@@ -22,7 +22,7 @@ router.post('/add-department', async (req, res, next) => {
 });
 
 //Return all department
-router.get('/department/data', authorization, async (req, res, next) => {
+router.get('/department/data', async (req, res, next) => {
   try {
     const data = await Department.find({}).select('-__v').sort('-date').limit().exec();
     res.json({ data });

@@ -34,7 +34,7 @@ router.post('/register', (req, res, next) => {
   if (!isValid) {
     return res.status(400).json(errors);
   }
-  const { company, email, department, password } = req.body;
+  const { company, email, department, password, role } = req.body;
 
   User.findOne({
     email: email,
@@ -47,6 +47,7 @@ router.post('/register', (req, res, next) => {
         email,
         department,
         password,
+        role,
       });
       // Hash Password
       bcrypt.genSalt(10, (err, salt) => {
@@ -204,7 +205,7 @@ router.put('/acknowledge-notice/:id', authorization, async (req, res, next) => {
     const data = User.updateOne(
       { _id: req.params.id },
       {
-        $push: {
+        $addToSet: {
           acknowledge: notice_id,
         },
       },
