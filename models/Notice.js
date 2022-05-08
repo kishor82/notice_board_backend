@@ -16,7 +16,7 @@ const NoticeSchema = new mongoose.Schema(
       required: true,
       trim: true,
     },
-    updatedBy: { type: mongoose.Schema.Types.ObjectId, required: true, ref: 'User' },
+    updatedBy: { type: mongoose.Schema.Types.ObjectId,  ref: 'User' },
     metaData: {
       type: Object,
       default: {},

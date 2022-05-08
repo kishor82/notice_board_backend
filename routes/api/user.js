@@ -138,8 +138,9 @@ router.get('/auth', authorization, async (req, res, next) => {
 // @desc Return registered users
 // @access Private
 router.post('/user', authorization, async (req, res, next) => {
+  const { company } = req.body;
   try {
-    const data = await User.find().select('-password -__v').sort('date').exec();
+    const data = await User.find({ company }).select('-password -__v').sort('date').exec();
     res.json({ data });
   } catch (err) {
     return next(boom.boomify(err));
@@ -165,10 +166,10 @@ router.put('/user/:id', authorization, async (req, res, next) => {
     if (!isValid) {
       return res.status(400).json(errors);
     }
-    const { comapany, email, department, status, role, password } = req.body;
+    const { company, email, department, status, role, password } = req.body;
     if (!password) {
       body = {
-        comapany,
+        company,
         email,
         department,
         status,
@@ -177,7 +178,7 @@ router.put('/user/:id', authorization, async (req, res, next) => {
     } else {
       const hashedPassword = await hashPassword(password);
       body = {
-        comapany,
+        company,
         email,
         department,
         status,
@@ -216,14 +217,15 @@ router.put('/acknowledge-notice/:id', authorization, async (req, res, next) => {
 });
 
 // Get Acknowledged Notice By User
-router.get('/acknowledge-notice/:id', authorization, async (req, res, next) => {
-  try {
-    const { notice_id } = req.body;
-    const data = User.find({ _id: req.params.id, acknowledge: { $in: [notice_id] } }).exec();
-    res.json(data);
-  } catch (err) {
-    return next(boom.boomify(err));
-  }
-});
+// router.post('/acknowledge-notice/:id', authorization, async (req, res, next) => {
+// NEED To check
+//   try {
+//     const { notice_id } = req.body;
+//     const data = User.find({ _id: req.params.id, acknowledge: { $in: [notice_id] } }).exec();
+//     res.json(data);
+//   } catch (err) {
+//     return next(boom.boomify(err));
+//   }
+// });
 
 module.exports = router;
